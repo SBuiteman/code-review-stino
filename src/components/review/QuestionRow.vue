@@ -18,7 +18,7 @@ watch(() => question.value.score, useReviewStore().nextQuestion);
   <div
     class="flex items-center cursor-pointer w-full justify-between bg-white p-1 rounded"
   >
-    <div class="flex items-center">
+    <div class="flex items-center w-full">
       <Icon
         v-if="question.score === 0"
         class="me-3 text-gray-600 mw-22"
@@ -45,17 +45,18 @@ watch(() => question.value.score, useReviewStore().nextQuestion);
       />
       <h3 class="font-semibold">{{ question.question }}</h3>
     </div>
-    <div>
+    <div class="flex w-1/3 items-center">
       <BaseRateSelect
         v-if="question?.questionType === 'rating'"
         :options="question?.options"
         v-model="question.score"
-        class="w-60!"
+        class="f grow"
       />
       <BaseTrueFalse
         v-if="question?.questionType === 'trueFalse'"
         :options="question?.options"
         v-model="question.score"
+        class="f grow"
       />
       <Icon
         class="ms-3 text-gray-600 min-w-[22px]"
