@@ -1,17 +1,8 @@
 <script setup lang="ts">
-import { reviewPlaceholders } from "@/constants/placeholders";
 import type { Question } from "~/types/review";
 const question = defineModel<Question>({ required: true });
 
 watch(() => question.value.score, useReviewStore().nextQuestion);
-
-// TODO: refactor this and change the if conditions to mark what is set/unset/touched/untouched
-// const randomPlaceholder = computed(() => {
-//   if (question.value.score === 0) return '';
-//   if (typeof question.value.score !== 'number') return 'Score this question...';
-//   const placeholders = reviewPlaceholders[question.value.score as keyof typeof reviewPlaceholders];
-//   return placeholders[Math.floor(Math.random() * placeholders.length)];
-// });
 </script>
 
 <template>
@@ -45,7 +36,7 @@ watch(() => question.value.score, useReviewStore().nextQuestion);
       />
       <h3 class="font-semibold">{{ question.question }}</h3>
     </div>
-    <div class="flex w-1/3 items-center">
+    <div class="flex w-1/2 md:w-1/3 items-center">
       <BaseRateSelect
         v-if="question?.questionType === 'rating'"
         :options="question?.options"
@@ -66,14 +57,5 @@ watch(() => question.value.score, useReviewStore().nextQuestion);
       </Icon>
     </div>
   </div>
-  <!-- <div v-if="question" class="flex h-full w-full flex-col items-end">
-
-      <Textarea
-        v-model="question.comment"
-        :placeholder="randomPlaceholder"
-        class="w-full mt-4"
-        rows="5"
-        cols="30"
-      />
-    </div> -->
+  <ReviewAddComment v-model="question" />
 </template>
