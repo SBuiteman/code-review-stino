@@ -3,11 +3,13 @@ import type { Question } from "~/types/review";
 const question = defineModel<Question>({ required: true });
 
 watch(() => question.value.score, useReviewStore().nextQuestion);
+
+const showCommentInput = ref(false);
 </script>
 
 <template>
   <div
-    class="flex items-center cursor-pointer w-full justify-between bg-white p-1 rounded"
+    class="flex items-center cursor-pointer w-full justify-between bg-white p-1 rounded mb-1"
   >
     <div class="flex items-center w-full">
       <Icon
@@ -53,9 +55,10 @@ watch(() => question.value.score, useReviewStore().nextQuestion);
         class="ms-3 text-gray-600 min-w-[22px]"
         name="uil:comment-medical"
         size="22"
+        @click="showCommentInput = !showCommentInput"
       >
       </Icon>
     </div>
   </div>
-  <ReviewAddComment v-model="question" />
+  <ReviewAddComment v-if="showCommentInput" v-model="question" />
 </template>
