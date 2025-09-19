@@ -1,14 +1,12 @@
 export const team = {
-  teamName: '',
+  reviewedTeamName: '',
   applicationName: '',
-  oarId: '',
-  teamClarityPage: '',
   codeRepository: '',
+  repoUrl: '',
+  branch: '',
   sonarQubeRepository: '',
   hpFortifyDashboard: '',
   nexusIqDashboard: '',
-  repoUrl: '',
-  branch: 'Master',
   reviewers: [] as string[],
   date: new Date(),
 };

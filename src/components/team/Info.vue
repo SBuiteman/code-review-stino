@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { useVuelidate } from "@vuelidate/core";
+import { required } from "@vuelidate/validators";
+import { onBeforeRouteLeave } from 'vue-router';
+
 const { team, reviewers } = storeToRefs(useTeamStore());
-const visible = ref(false);
 const nameField = ref("");
 
 const addReviewer = () => {
@@ -15,12 +18,43 @@ const removeReviewer = (remover: string) => {
     (reviewer) => reviewer !== remover
   );
 };
+
+const addAsterisk = (key: string): string => {
+  if (["sonarQubeRepository", "hpFortifyDashboard", "nexusIqDashboard"].some((match) => key === match)) {
+    return ''
+  }
+  return '*'
+}
+
+const rules = {
+  team: {
+    reviewedTeamName: { required },
+    applicationName: { required },
+    reviewers: { required },
+    repoUrl: { required },
+    codeRepository: { required },
+    branch: { required },
+    date: { required },
+  },
+};
+
+const v$ = useVuelidate(rules, { team });
+
+// Force users to complete the form before navigating
+onBeforeRouteLeave(() => {
+  v$.value.team.$touch();
+  if (v$.value.team.$invalid) {
+    return false;                     
+  }
+});
+
+
 </script>
 
 <template>
   <div class="w-full">
     <p class="text-sm mt-2 mb-5">
-      Please fill out the following fields with the relevant information:
+      Please fill out the following fields with the relevant information (* fields are required):
     </p>
     <Fieldset
       legend="Project details"
@@ -34,13 +68,17 @@ const removeReviewer = (remover: string) => {
             class="flex py-3 not-last:border-b border-secondary !w-full"
           >
             <!-- Keys -->
-            <div class="w-1/3 capitalize flex items-center">{{ formatKey(key) }}</div>
+            <label :for="key" class="w-1/3 capitalize flex items-center">{{ formatKey(key) + addAsterisk(key) }}</label>
 
             <!-- Value if Date -->
             <div v-if="key === 'date'" class="flex items-center !w-full mr-auto">
-              <!-- {{ formatDate(item.date) }} -->
-              <div class="">
-                <DatePicker :id="key" v-model="team[key]" />
+              <div class="w-full">
+                <DatePicker
+                  :id="key"
+                  v-model="team[key]"
+                  :inputClass="{ 'p-invalid': v$.team.date.$error }"
+                  placeholder="Date"
+                />
               </div>
             </div>
 
@@ -52,6 +90,7 @@ const removeReviewer = (remover: string) => {
                   v-model="nameField"
                   class="grow !w-full"
                   placeholder="Reviewer name"
+                  :invalid="v$.team['reviewers']?.$error"
                 />
                 <Button
                   label="Add reviewer"
@@ -83,6 +122,8 @@ const removeReviewer = (remover: string) => {
                 class="w-full"
                 :id="key"
                 v-model="team[key]"
+                :invalid="v$.team[key]?.$error"
+                placeholder="Your answer..."
               />
             </div>
           </li>

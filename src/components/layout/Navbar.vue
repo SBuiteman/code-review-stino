@@ -1,12 +1,16 @@
 <script setup>
 const menuitems = [
   {
-    title: 'Overview',
+    title: 'Project information',
     path: '/',
   },
   {
-    title: 'Project information',
-    path: '/project-information',
+    title: 'Overview',
+    path: '/overview',
+  },
+  {
+    title: 'Review',
+    path: '/review',
   },
   {
     title: 'Score',

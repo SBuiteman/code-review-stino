@@ -12,7 +12,7 @@ const reviewersString = computed(() => {
 <template>
   <Fieldset class="mx-auto! max-w-4xl!" pt:legend="text-xl" legend="Introduction">
     <p>
-      This is the review for the team <strong>{{ team.teamName || '<developer-anonimous>' }} </strong>.
+      This is the review for the team <strong>{{ team.reviewedTeamName || '<developer-anonimous>' }} </strong>.
       This review is written by <strong>{{ reviewersString || '<anon>' }}</strong> and is about the application <strong>{{ team.applicationName || '<my-app>' }}</strong>. 
       On average, the team scored <strong>{{ totalScore.totalScore }} of {{ totalScore.maxScore }}</strong> possible points.
       That means
