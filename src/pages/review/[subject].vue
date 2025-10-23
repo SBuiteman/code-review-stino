@@ -26,7 +26,7 @@
     if (subject?.value?.topics?.[topicIndex]) {
       subject.value.topics[topicIndex].applicable = true;
       subject.value.topics[topicIndex].questions.forEach((q) => {
-        q.score = 0;
+        q.score = null;
       });
     }
   };
@@ -62,7 +62,7 @@
 
         <Fieldset :legend="topic.title + ' Checks'" toggleable class="mb-5! bg-slate-50!" pt:legend="bg-transparent!">
           <div class="flex flex-wrap justify-end">
-            <Button severity="secondary" @click="markAsUnset(topic.title)">
+            <Button severity="secondary" class="px-2!" @click="markAsUnset(topic.title)">
               Mark checks as 'Unset'
               <Icon class="min-w-[22px]" name="uil:circle" size="22" />
             </Button>

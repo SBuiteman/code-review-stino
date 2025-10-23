@@ -25,7 +25,7 @@
 
 <template>
   <span>
-    <div class="flex items-center cursor-pointer w-full justify-between bg-white p-1 rounded mb-1">
+    <div class="flex items-center cursor-pointer justify-between bg-white py-1 px-2 rounded mb-1">
       <div class="flex items-center w-full">
         <Icon v-if="question.score === 0" class="me-3 text-gray-600 mw-22" name="uil:times-circle" size="22" />
         <Icon v-else-if="typeof question.score === 'number' && question.comment" class="me-3 text-green-600 mw-22"
