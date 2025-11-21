@@ -14,7 +14,7 @@ const TIERS = [
   { code: 'D ', name: 'Could be improved', score: 3, color: '#fdf7d6', textColor: 'black' },
   { code: 'E', name: 'Needs improvement', score: 2, color: '#de6560', textColor: 'white' },
   { code: 'F', name: 'Needs rework', score: 1, color: '#ca3d3f', textColor: 'white' },
-  { code: 'X', name: 'Not applicable', score: 0, color: '#e2e8f0', textColor: 'black' },
+  { code: 'X', name: 'N/A', score: 0, color: '#e2e8f0', textColor: 'black' },
 ]
 
 const opts = options ? TIERS.map((tier, index) => ({
