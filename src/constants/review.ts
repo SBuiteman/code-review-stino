@@ -5,8 +5,8 @@ type Review = {
 }
 
 export const review: Review = {
-  qualityGates: {
-    title: 'Code Quality',
+  staticCodeAnalysis: {
+    title: 'Static Code Analysis',
     img: '/img/quality.avif',
     description: 'Ensure that the codebase is of high quality and follows best practices.',
     topics: [
@@ -17,12 +17,9 @@ export const review: Review = {
         description:
           '<p>ESLint is a powerful tool for identifying and fixing problems in JavaScript code. It is essential for maintaining code quality and ensuring consistency across a project. By enforcing a set of rules, ESLint helps developers adhere to best practices and avoid common pitfalls. It is highly customizable, allowing teams to tailor it to their specific coding standards. Proper configuration and usage of ESLint can significantly improve the readability and maintainability of the codebase, making it easier for new developers to onboard and for teams to collaborate effectively.</p><ul><li>Ensure that ESLint is configured and enabled.</li><li>Run eslint</li><li>Search the whole repository for the following query to find disabled rules: "eslint-disable" </li><li>Ensure that the ESLint configuration is up-to-date and follows best practices.</li></ul>',
         questions: [
-          { question: 'Is ESlint enabled?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is the configuration in one file?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Does the configuration deviate?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are there any rules disabled in-line?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are there ESlint errors?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are there ESlint warnings?', score: 0, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Is ESlint enabled using the aab/eslint-config?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are there any custom eslint rules set up in the project?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are there any rules disabled in-line or in-file?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
         ],
       },
       {
@@ -32,13 +29,8 @@ export const review: Review = {
         description:
           '<p>SonarQube is a leading continuous inspection tool used to automatically analyze source code, detecting potential bugs, vulnerabilities, and code smells. It serves as an invaluable resource for development teams aiming to maintain high standards of code quality and security. By integrating SonarQube into the development pipeline, teams can ensure that code quality is measured and monitored consistently, providing actionable insights and recommendations for improvement. This proactive approach not only helps in maintaining a healthy codebase but also facilitates better collaboration and accountability among developers.</p><ul><li>Check the SonarQube dashboard</li><li>Check the sonar-project.properties file to see if certain files are excluded from the scan</li><li>Check if the SonarQube scan is executed in the pipeline</li><li>Provide examples of problematic issues</li></ul>',
         questions: [
-          { question: 'Is SonarQube enabled?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is the correct Quality gate enabled?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are there any Blocker issues?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are there any Critical issues?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are there any Major issues?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are there any Minor issues?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: "Are there any incorrectly marked 'false-positives' or 'wont-fix'?", score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is SonarQube enabled and using the right Quality Gate?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Do you see any Sonarqube reported issues that need attention?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
         ],
       },
       {
@@ -48,11 +40,8 @@ export const review: Review = {
         description:
           '<p>HP Fortify is a comprehensive application security tool designed to identify, prioritize, and remediate vulnerabilities in source code. It is widely used by organizations to safeguard their software against potential threats by performing deep security analysis and providing detailed insights into security weaknesses. By integrating Fortify into the development lifecycle, teams can proactively address security issues, ensuring that applications are robust and secure before deployment. This not only helps in minimizing risks but also enhances the overall security posture of the organization.</p><ul><li>Check the Fortify dashboard</li><li>Check if the Fortify scan is enabled in the pipeline file</li><li>Provide examples of problematic issues</li></ul>',
         questions: [
-          { question: 'Is HP Fortify enabled?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are there any Critical issues?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are there High any severity issues?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are there Medium any severity issues?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are there Low any severity issues?', score: 0, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Is Fortify enabled?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Do you see any Fortify reported issues that need attention?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
         ],
       },
       {
@@ -62,10 +51,52 @@ export const review: Review = {
         description:
           '<p>NexusIQ is a powerful tool for managing open-source components and ensuring that software applications remain secure and compliant. It offers comprehensive insights into the open-source libraries used within a project, identifying potential vulnerabilities, license compliance issues, and outdated components. By integrating NexusIQ into the development pipeline, organizations can automate the monitoring of open-source dependencies and receive early warnings about potential risks. This proactive approach helps teams maintain high security standards and avoid potential legal and compliance issues related to open-source software usage.</p><ul><li>Check the NexusIQ dashboard</li><li>Check if the NexusIQ scan is enabled in the pipeline file</li><li>Provide examples of problematic issues</li></ul>',
         questions: [
-          { question: 'Is NexusIQ enabled?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are there Blocking (threat level >=8) violations?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are there Future Blocking (threat level 7) violations?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are there other violations?', score: 0, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Is NexusIQ enabled?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Do you see any NexusIQ reported issues that need attention?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+        ],
+      },
+    ]
+  },
+  versionControl: {
+    title: 'Version Control',
+    img: '/img/versioning.avif',
+    description: 'Ensure that the project follows best practices for version control and versioning.',
+    topics: [
+      {
+        title: 'Release strategy',
+        comment: '',
+        applicable: true,
+        description: `<ul>
+                        <li>Ensure that commit messages are clear, concise, and meaningful.</li>
+                        <li>Follow the conventional commit guidelines.</li>
+                      </ul>`,
+        questions: [
+          { question: 'Are commit messages clear and meaningful?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Is commit linting enforced and not deviating from Warp-drive standards?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is commit linting enforced and not deviating from Warp-drive standards?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+        ],
+      }, {
+        title: 'Versioning',
+        comment: '',
+        applicable: true,
+        description:
+          "<p>Commit message quality is a vital aspect of effective version control, playing a significant role in maintaining a project's clarity and manageability. Well-crafted commit messages provide a clear and concise history of changes, making it easier for team members to understand the evolution of the codebase. By following conventional commit guidelines, developers can ensure that messages are structured and informative, facilitating better collaboration and simplifying tasks such as code reviews and debugging. High-quality commit messages not only enhance communication within the team but also serve as valuable documentation for future reference.</p><ul><li>Ensure that commit messages are clear, concise, and meaningful.</li><li>Follow the conventional commit guidelines.</li></ul>",
+        questions: [
+          { question: 'Is semantic versioning followed?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Do versions follow the MAJOR.MINOR.PATCH format?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are version increments meaningful? (Breaking changes -> major, Feature -> minor, Bugfix -> patch)', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is the change-log well-maintained including releases versions and descriptions?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+        ],
+      }, {
+        title: 'Branching Quality',
+        comment: '',
+        applicable: true,
+        description:
+          '<p>Branching quality is a key factor in maintaining an organized and efficient version control system. An effective branching strategy allows teams to manage multiple streams of work simultaneously, enabling features, bug fixes, and experiments to be developed in isolation before being integrated into the main codebase. Keeping branches updated with main branches and using rebasing where appropriate ensures that changes are smoothly incorporated and reduces the potential for conflicts. Adopting good branching practices, such as meaningful branch naming and regular synchronization with the main branch, enhances collaboration and helps maintain a clean project history, facilitating easier tracking and management of changes.</p><ul><li>Ensure that the branching strategy is effective and branches are kept updated with main branches.</li><li>Check if rebasing is used where appropriate.</li><li>Provide examples of good branching practices.</li></ul>',
+        questions: [
+          { question: 'Does the team have a clear branching strategy to get to production?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are feature branches clearly named following a pattern that describe the work item?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is the main branch protected from direct changes and deletion?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
         ],
       },
     ],
@@ -444,117 +475,6 @@ export const review: Review = {
         description:
           '<p>Screenreader testing is an essential component of accessibility evaluation, ensuring that web applications are navigable and comprehensible for users who rely on assistive technologies. Screenreaders convert digital text into synthesized speech, allowing individuals with visual impairments to interact with web content. By conducting thorough screenreader tests, developers can identify potential barriers and enhance the usability of their applications for this audience. This process involves verifying that all interactive elements are properly labeled, content is logically structured, and navigation is intuitive. Prioritizing screenreader compatibility not only fosters inclusivity but also aligns with accessibility standards and best practices.</p>',
         questions: [{ question: 'Does the application pass a manual screenreader test?', score: 0, weight: 1, questionType: 'rating', comment: '' }],
-      },
-    ],
-  },
-  versioning: {
-    title: 'Versioning',
-    img: '/img/versioning.avif',
-    description: 'Ensure that the project follows best practices for version control and versioning.',
-    topics: [
-      {
-        title: 'Merge Quality',
-        comment: '',
-        applicable: true,
-        description:
-          '<p>Maintaining high merge quality is essential for ensuring a clean and stable codebase in any version-controlled project. Effective merge practices help avoid unnecessary complications, such as redundant commits and unresolved conflicts, which can lead to code instability and hinder collaboration. By prioritizing clean merges, teams can ensure that only relevant changes are integrated, maintaining a clear project history and facilitating easier tracking of modifications. Proper conflict resolution and diligent review of merge requests are crucial steps in preserving code integrity and preventing potential issues during deployment.</p><ul><li>Ensure that merges are clean and do not contain unnecessary commits.</li><li>Check if conflicts are resolved properly.</li><li>Provide examples of problematic merge issues.</li></ul>',
-        questions: [
-          { question: 'Are merges clean and concise?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are merge conflicts resolved appropriately?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Is unnecessary merging avoided?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-        ],
-      },
-      {
-        title: 'Commit Message Quality',
-        comment: '',
-        applicable: true,
-        description: `<ul>
-                        <li>Ensure that commit messages are clear, concise, and meaningful.</li>
-                        <li>Follow the conventional commit guidelines.</li>
-                      </ul>`,
-        questions: [
-          { question: 'Are commit messages clear and meaningful?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Do commit messages follow conventional commit guidelines?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are commit messages concise?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-        ],
-      },
-      {
-        title: 'Commit Linting',
-        comment: '',
-        applicable: true,
-        description: `<ul>
-                        <li>Ensure that commit messages are linted to follow a consistent style.</li>
-                        <li>Check if automated tools are used for commit linting.</li>
-                      </ul>`,
-        questions: [
-          { question: 'Is commit linting enforced?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are automated tools used for commit linting?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are linting errors in commit messages avoided?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-        ],
-      },
-      {
-        title: 'Commit Message Quality',
-        comment: '',
-        applicable: true,
-        description:
-          "<p>Commit message quality is a vital aspect of effective version control, playing a significant role in maintaining a project's clarity and manageability. Well-crafted commit messages provide a clear and concise history of changes, making it easier for team members to understand the evolution of the codebase. By following conventional commit guidelines, developers can ensure that messages are structured and informative, facilitating better collaboration and simplifying tasks such as code reviews and debugging. High-quality commit messages not only enhance communication within the team but also serve as valuable documentation for future reference.</p><ul><li>Ensure that commit messages are clear, concise, and meaningful.</li><li>Follow the conventional commit guidelines.</li></ul>",
-        questions: [
-          { question: 'Is semantic versioning followed?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are version increments meaningful?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Do versions follow the MAJOR.MINOR.PATCH format?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          {
-            question:
-              'Are semantic versions generated according to standards (conventional-commits)? For example: Breaking changes -> major, Feature -> minor, Bugfix -> patch',
-            score: 0,
-            weight: 1,
-            questionType: 'trueFalse',
-            comment: '',
-          },
-        ],
-      },
-      {
-        title: 'Change-log Quality',
-        comment: '',
-        applicable: true,
-        description:
-          "<p>A high-quality change-log is an essential tool for tracking the history of changes in a project, providing a comprehensive record that benefits developers, stakeholders, and users alike. A well-maintained change-log not only documents what has been modified, added, or removed but also offers context and clarity, making it easier to understand the project's evolution. By ensuring that changes are documented clearly and consistently, teams can facilitate seamless communication and collaboration, aiding in tasks such as deployments, troubleshooting, and auditing. A thorough change-log enhances transparency and accountability, serving as a reliable reference for all project participants.</p><ul><li>Ensure that the change-log is updated and well-maintained.</li><li>Check if changes are documented clearly.</li></ul>",
-        questions: [
-          { question: 'Is the change-log well-maintained?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are changes documented clearly in the change-log?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Is the change-log updated regularly?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are change-logs generated on merge of a feature branch?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-        ],
-      },
-      {
-        title: 'PR Discipline',
-        comment: '',
-        applicable: true,
-        description:
-          '<p>Maintaining strong pull request (PR) discipline is crucial for effective collaboration and code quality in a development team. Well-managed PRs facilitate smooth integration of changes, reduce the risk of introducing bugs, and enhance the overall development workflow. By ensuring that PRs are small, focused, and adhere to best practices, teams can streamline the review process and enable more thorough and efficient evaluations. This discipline helps in catching potential issues early, promoting a culture of continuous improvement and learning. Providing examples of good and bad PR practices can further reinforce these principles, guiding developers towards more effective contribution strategies.</p><ul><li>Ensure that pull requests (PRs) follow best practices.</li><li>Check if PRs are small, focused, and reviewed properly.</li><li>Provide examples of good and bad PR practices.</li></ul>',
-        questions: [
-          { question: 'Are PRs small and focused?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are PRs reviewed properly?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are best practices followed in PRs?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-        ],
-      },
-      {
-        title: 'Branching Quality',
-        comment: '',
-        applicable: true,
-        description:
-          '<p>Branching quality is a key factor in maintaining an organized and efficient version control system. An effective branching strategy allows teams to manage multiple streams of work simultaneously, enabling features, bug fixes, and experiments to be developed in isolation before being integrated into the main codebase. Keeping branches updated with main branches and using rebasing where appropriate ensures that changes are smoothly incorporated and reduces the potential for conflicts. Adopting good branching practices, such as meaningful branch naming and regular synchronization with the main branch, enhances collaboration and helps maintain a clean project history, facilitating easier tracking and management of changes.</p><ul><li>Ensure that the branching strategy is effective and branches are kept updated with main branches.</li><li>Check if rebasing is used where appropriate.</li><li>Provide examples of good branching practices.</li></ul>',
-        questions: [
-          { question: 'Is the branching strategy effective?', score: 0, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are branches regularly updated with main branches?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is rebasing used where appropriate?', score: 0, weight: 1, questionType: 'trueFalse', comment: '' },
-          {
-            question: 'Rebase is being used to avoid merges from main branches to feature branches and to keep the branches updated?',
-            score: 0,
-            weight: 1,
-            questionType: 'trueFalse',
-            comment: '',
-          },
-        ],
       },
     ],
   },
