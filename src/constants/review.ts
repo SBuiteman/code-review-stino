@@ -113,21 +113,18 @@ export const review: Review = {
         description:
           "<p>Managing dependencies effectively is crucial for maintaining a healthy and stable software project. Dependencies are external libraries or modules that a project relies on, and keeping them updated and supported ensures compatibility, security, and optimal performance. Regularly reviewing and updating dependencies can prevent issues related to deprecated or unsupported packages, which can introduce vulnerabilities and unexpected behavior. By integrating tools and best practices into your workflow, you can ensure that your project's dependencies are well-managed and aligned with current standards.</p><ul><li>Invoke the vue-cli-plugin-ibrebuild/ Warp-drive and check the differences in dependencies</li><li>Check the nodeVersion that is set in the pipeline file (>18)</li><li>Check the lockfileVersion in the package-lock.json file (v3)</li><li>Check for unsupported dependencies like: emerald-global, axios, extract-loader, ...</li><li>Provide examples of problematic issues</li><li>Run `npx depcheck` to find possible dependency issues.</li></ul>",
         questions: [
-          { question: 'Is the latest supported version of Vue used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
           { question: 'Is the latest supported version of Node used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are the Emerald Web Components used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is the @aab/sc-vue-cli-plugin-ibrebuild used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are there major outdated dependencies present?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Are custom plugins installed that are needlessly large or complex?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: '(Run `npm outdated`) Are there Major version differences that need resolving?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are deprecated dependencies in use?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
           { question: 'Are dependencies and devDependencies mixed? (Testcafe, playwright, babel, ... in dependencies)', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are unsupported dependencies used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are deprecated dependencies used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is semver used correctly?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are dependency versions-ranges correctly specified in the package.json?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
         ],
       },
     ],
   },
   setup: {
-    title: 'Project set-up',
+    title: 'Application design',
     img: '/img/setup.avif',
     description: 'Ensure that the project setup follows the expected structure and conventions.',
     topics: [
@@ -137,12 +134,28 @@ export const review: Review = {
         applicable: true,
         description:
           "<p>A well-organized folder structure is a foundational aspect of any successful software project. It enhances code readability and maintainability by establishing a clear, logical arrangement of files and directories. This organization helps developers quickly locate and identify components, reducing the cognitive load and improving team collaboration. Adhering to a consistent folder structure can also facilitate smoother onboarding for new team members, as it provides an intuitive roadmap of the project's architecture. Regularly reviewing and refining the folder structure ensures that it evolves alongside the project, accommodating new features and technologies effectively.</p><ul><li>Invoke the vue-cli-plugin-ibrebuild/Warp-drive and check the differences in the source control section of your IDE</li><li>Provide examples of problematic issues</li></ul>",
-        questions: [
+        questions: [      
           { question: 'Does the folder structure deviate from the default scaffolded project?', score: null, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are the folders and files semantically named?', score: null, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Is the folder- and file name spacing consistent?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are there any missing folders?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are the folders and files semantically and consistently named?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Is the folder- and file name spacing ?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
           { question: 'Is there a logical separation of concern (e.g. state, functions, components)?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Is business logic understandable and logically placed within the project structure?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          // { question: 'Are there any missing folders?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+        ],
+      },
+      {
+        title: 'Tech-stack',
+        comment: '',
+        applicable: true,
+        description:'',
+        questions: [
+          { question: 'If applicable: Is warp-drive used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is the Emerald library used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is state managed through Pinia modules?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is fetching done through dataAccess?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is CH-ASM in use?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is I18n in use?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'If applicable: Are session- and/or localStorage logically used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
         ],
       },
       {
@@ -372,6 +385,7 @@ export const review: Review = {
                           <li>Provide examples of problematic issues</li>
                         </ul>`,
         questions: [
+          { question: 'Are dependencies pulled from the ABN AMRO environment (Nexus npm mirror)?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
           { question: 'Are secrets in the repository avoided?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
           { question: 'Is broken access control avoided?', score: null, weight: 1, questionType: 'rating', comment: '' },
           { question: 'Are cryptographic failures avoided?', score: null, weight: 1, questionType: 'rating', comment: '' },
