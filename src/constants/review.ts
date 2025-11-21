@@ -391,6 +391,9 @@ export const review: Review = {
     title: 'Testing',
     img: '/img/testing.avif',
     description: 'Ensure that the project has a high test coverage and follows best practices for testing.',
+// Are integration test present for all user scenarios? apply unit t. question to integration tests
+// Is mocking done correctly?
+// are waits avoided?
     topics: [
       {
         title: 'Unit Testing',
@@ -399,17 +402,26 @@ export const review: Review = {
         description:
           '<p>Unit testing is a critical practice in software development that focuses on verifying the smallest testable parts of an application, typically individual functions or components, to ensure they work as intended. By systematically testing each unit in isolation, developers can identify and fix bugs early in the development process, leading to more reliable and maintainable code. A robust unit testing strategy not only enhances code quality but also provides a safety net for future changes, enabling developers to refactor and evolve the codebase with confidence. Utilizing tools like Jest and Vite for unit testing and mutation testing, respectively, can further improve the depth and effectiveness of testing efforts, ensuring comprehensive coverage and code quality.</p><ul><li>No coverage tricks, search for: <mark>/* c8 ignore</mark>, <mark>/* istanbul ignore</mark></li><li>No skipped unit-tests, search for: <mark>.skip</mark>, <mark>.only</mark></li><li>Check if files are excluded from coverage from jest config file</li><li>Stryker can be used to get a more in-depth view on the quality of tests, though it should be used sensibly: <a href="https://stryker-mutator.io/docs/stryker-js/guides/vuejs/">https://stryker-mutator.io/docs/stryker-js/guides/vuejs/</a></li><li>Provide examples of problematic issues</li></ul>',
         questions: [
-          { question: 'Are unit tests present?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is code split up in pure functions to easily test?', score: null, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Is the coverage threshold met? >80%, less than 100%', score: null, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are unit tests meaningful?', score: null, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are unit tests isolated?', score: null, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are externals mocked correctly?', score: null, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are components mounted correctly?', score: null, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are skipped test(suite)s avoided?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is the ibrs-test-helpers module used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are promises correctly handled?', score: null, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Is the recommended way of unit testing followed?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Are all unit tests passing without any skipped or commented tests?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are testcases formulated in a clear way to indicate expected behavior or outcome in specific scenarios?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Are unit tests follow the "given" "when" "then" structure in their setup?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Are unit tests specific and not asserting too many things?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Are mocks and stubs used in a meaningful way?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Are mocks and test data (re)set before execution of each test?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Is the HTML included in the test scenarios?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Are unit tests run in isolation?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Are false positives avoided and are tests free of redundant code?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Are unit tests present?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          // { question: 'Is code split up in pure functions to easily test?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Is the coverage threshold met? >80%, less than 100%', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Are unit tests meaningful?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Are unit tests isolated?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Are externals mocked correctly?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Are components mounted correctly?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Are skipped test(suite)s avoided?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          // { question: 'Is the ibrs-test-helpers module used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          // { question: 'Are promises correctly handled?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Is the recommended way of unit testing followed?', score: null, weight: 1, questionType: 'rating', comment: '' },
         ],
       },
       {
@@ -419,11 +431,24 @@ export const review: Review = {
         description:
           '<p>Functional testing is an essential aspect of software quality assurance, focusing on verifying that the application performs its intended functions correctly. Unlike unit tests, which test individual components in isolation, functional tests assess the system as a whole, ensuring that all components interact correctly to deliver the desired outcomes. This type of testing is crucial for validating user flows and business logic, providing confidence that the application meets both functional and user requirements. By integrating functional tests into the development pipeline, teams can catch regressions early, improve reliability, and deliver a seamless user experience.</p><ul><li>No skipped tests, search for: <mark>.only</mark></li><li>Check if functional tests are run in the build step of the pipeline</li><li>Provide examples of problematic issues</li></ul>',
         questions: [
-          { question: 'Are functional tests present?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are critical flows tested?', score: null, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Is user interaction tested?', score: null, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are skipped test(suite)s avoided?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are all functional tests passing without any skipped or commented tests?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are testcases formulated in a clear way to indicate expected behavior or outcome in specific scenarios?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Are functional tests follow the "given" "when" "then" structure in their setup?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Are functional tests behavior driven to follow user interaction?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Are functional tests set up to follow the user flows of the application?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Are unit tests specific and not asserting too many things?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Are mocks and stubs used in a meaningful way?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Are mocks and test data (re)set before execution of each test?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Is the HTML included in the test scenarios?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Are unit tests run in isolation?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          { question: 'Are false positives avoided and are tests free of redundant code?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Are functional tests present?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          // { question: 'Are critical flows tested?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Is user interaction tested?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Are skipped test(suite)s avoided?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
           { question: 'Are page object models from the Emerald Web Components used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is use of timeouts or wait functions avoided?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are functional tests using page object models and reusable functions for the execution of their flow?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
         ],
       },
       {
@@ -433,9 +458,10 @@ export const review: Review = {
         description:
           "<p>End-to-end (E2E) testing is a comprehensive testing approach that simulates real user scenarios to validate the complete workflow of an application. By testing the application from start to finish, E2E tests ensure that all integrated components function together as expected, providing a high level of confidence in the application's reliability and performance. E2E testing is crucial for identifying issues that may not be caught by unit or functional tests, such as integration errors or unexpected user interactions. Incorporating E2E tests into the development pipeline helps teams detect and resolve issues early, ensuring a seamless and robust user experience.</p><ul><li>No skipped tests, search for: <mark>.only</mark></li><li>Check if E2E tests are enabled in the pipeline on DTA</li><li>Provide examples of problematic issues</li></ul>",
         questions: [
-          { question: 'Are E2E tests present?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are critical flows tested?', score: null, weight: 1, questionType: 'rating', comment: '' },
-          { question: 'Are the E2E tests triggered on the acceptance environment?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          // { question: 'Are E2E tests present?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          // { question: 'Are critical flows tested?', score: null, weight: 1, questionType: 'rating', comment: '' },
+          // { question: 'Are the E2E tests triggered on the acceptance environment?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are the E2E tests triggered on the Test and Acceptance environment?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
         ],
       },
       {
