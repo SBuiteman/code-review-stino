@@ -122,6 +122,24 @@ export const review: Review = {
           { question: 'Are dependency versions-ranges correctly specified in the package.json?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
         ],
       },
+      {
+        title: 'Tech-stack',
+        comment: '',
+        applicable: true,
+        description:'',
+        questions: [
+          { question: 'Is warp-drive used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is the Emerald library used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is state managed through Pinia modules?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is fetching done through dataAccess?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is I18n being used for translations?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is the COESD pipeline being used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is Composition api used, consistently?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is another framework or library used that is not bank-standard?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'If applicable: Is CH-ASM being used to authorize calls?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'If applicable: Are session- and/or localStorage logically used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+        ],
+      },
     ],
   },
   testing: {
@@ -188,24 +206,7 @@ export const review: Review = {
     img: '/img/setup.avif',
     description: 'Ensure that the project setup follows the expected structure and conventions.',
     topics: [
-      {
-        title: 'Tech-stack',
-        comment: '',
-        applicable: true,
-        description:'',
-        questions: [
-          { question: 'Is warp-drive used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is the Emerald library used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is state managed through Pinia modules?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is fetching done through dataAccess?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is I18n being used for translations?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is the COESD pipeline being used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is Composition api used, consistently?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is another framework or library used that is not bank-standard?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'If applicable: Is CH-ASM being used to authorize calls?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'If applicable: Are session- and/or localStorage logically used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-        ],
-      },
+      // TODO: uitbreiden met topics uit de userstory
       {
         title: 'Code structure',
         comment: '',
@@ -238,7 +239,6 @@ export const review: Review = {
       },
     ],
   },
-  // TODO
   styling: {
     title: 'Styling',
     img: '/img/styling.avif',
@@ -251,14 +251,11 @@ export const review: Review = {
         description:
           "<p>The Emerald design system is a vital resource for maintaining visual and functional consistency across applications. It provides a unified set of components and styling guidelines that help teams deliver a cohesive user experience. By leveraging Emerald components, developers can ensure that their applications not only adhere to branding standards but also benefit from pre-tested, reusable elements that enhance efficiency and reduce development time. Regularly reviewing the usage of these components ensures that the project remains aligned with the latest updates and best practices, preventing the use of deprecated or unsupported styling libraries.</p><ul><li>Check the package.json for @aab/sc-aab-* components</li><li>Search the project with the following query for each component to find unused components: import '@aab/sc-aab-COMPONENT-NAME'</li><li>Check for unsupported dependencies like: bootstrap, vuetify</li><li>Provide examples of problematic issues</li></ul>",
         questions: [
-          { question: 'Are the Primevue components used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are the Emerald 2 components used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
           { question: 'Is the application using the Emerald 2 styling presets?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is the application using the Emerald 1.5 styling presets?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is the application using custom components for elements provided by our component library?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are there any third-party UI components not from Primevue?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'The application is not using custom components made with elements which are not in the Emerald library?', score: null, weight: 1, questionType: 'trueFalse', comment: '' }, //TODO
+          { question: 'Are there any third-party UI components not from Emerald 2?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
           { question: 'Are any of the components heavily customized?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          // { question: 'Are there any unused Emerald components and imports present?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          // { question: 'Are there any local UI components present?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
         ],
       },
       {
@@ -285,6 +282,7 @@ export const review: Review = {
       },
     ],
   },
+  // TODO
   technology: {
     title: 'Technology stack usage',
     img: '/img/setup.avif',
@@ -409,6 +407,7 @@ export const review: Review = {
     ],
   },
   bestPractices: {
+    // TODO: heet nu Code Readability, moet aangepast worden deels op basis van het artikel over cognitive load
     title: 'Best Practices',
     img: '/img/best-practices.avif',
     description: 'Ensure that the project follows best practices and conventions.',
@@ -506,4 +505,5 @@ export const review: Review = {
       },
     ],
   },
+  // TODO: missing topics
 };
