@@ -200,45 +200,102 @@ export const review: Review = {
       },
     ],
   },
-  // WIP
   setup: {
     title: 'Application design',
     img: '/img/setup.avif',
     description: 'Ensure that the project setup follows the expected structure and conventions.',
     topics: [
-      // TODO: uitbreiden met topics uit de userstory
       {
-        title: 'Code structure',
+        title: 'Locality of Behaviour (LoB)',
         comment: '',
         applicable: true,
         description:'',
         questions: [
-          { question: 'Are large components broken down in smaller components?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is large logic broken down in helpers/composables/stores?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are api calls centralized?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is error handling centralized?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are async operations handled correctly with error handling?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are try catch blocks being used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are templates clean and easy to read?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are re-usable types being imported from a central location?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Does each component encapsulate the logic, template, and styles relevant to its behavior (i.e., no “action at a distance”)?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are reactive state changes located close to where they are used?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are event handlers, effects, watchers, and side effects placed in the same file/module as the UI they impact?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Does the code avoid scattering business logic across distant, unrelated files?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'When a developer reads a component, can they understand its behavior without jumping through too many multiple files?', score: null, weight: 1, questionType: 'rating', comment: '' },
         ]
       },
       {
-        title: 'Folder structure',
+        title: 'Architecture',
         comment: '',
         applicable: true,
-        description:
-          "<p>A well-organized folder structure is a foundational aspect of any successful software project. It enhances code readability and maintainability by establishing a clear, logical arrangement of files and directories. This organization helps developers quickly locate and identify components, reducing the cognitive load and improving team collaboration. Adhering to a consistent folder structure can also facilitate smoother onboarding for new team members, as it provides an intuitive roadmap of the project's architecture. Regularly reviewing and refining the folder structure ensures that it evolves alongside the project, accommodating new features and technologies effectively.</p><ul><li>Invoke the vue-cli-plugin-ibrebuild/Warp-drive and check the differences in the source control section of your IDE</li><li>Provide examples of problematic issues</li></ul>",
-        questions: [      
-          { question: 'Does the folder structure deviate from the default scaffolded project?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are warp-drive scaffolded files heavily altered?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Are the folders and files semantically and consistently named?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is there a logical separation of concern (e.g. state, functions, components)?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-          { question: 'Is business logic understandable and logically placed within the project structure and not in the presentation layer?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
-        ],
+        description:'',
+        questions: [
+          { question: 'Is the overall architecture clearly documented (layers, boundaries, modules, data flow)?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Does the project follow a recognizable architecture (e.g., modular, feature-based, domain‑driven)?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is the use of Composition API applied in a consistent way in stores, composables and components?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are asynchronous flows (API calls, data loading, caching, error handling) handled in a predictable and centralized manner?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are the project files structured by feature/domain rather than by file type?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are domain, application, infrastructure, and UI layers clearly separated in the file structure?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+        ]
       },
+      {
+        title: 'State Logic & Business Logic Management',
+        comment: '',
+        applicable: true,
+        description:'',
+        questions: [
+          { question: 'Is shared state placed in appropriate stores (Pinia/Vuex) rather than hidden inside components?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is business logic extracted into composables, utils, or stores instead of being mixed into templates?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is there clear distinction between UI state and Application state?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Does the state flow follow the “single source of truth” principle?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+        ]
+      },
+      {
+        title: 'Co‑Dependencies & Coupling',
+        comment: '',
+        applicable: true,
+        description:'',
+        questions: [
+          { question: 'Are there shared modules/components that introduce tight coupling?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Does the application avoid deeply nested dependencies that make refactoring difficult?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Is it possible to remove/refactor modules without breaking the application?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+        ]
+      },
+      {
+        title: 'Component API Design',
+        comment: '',
+        applicable: true,
+        description:'',
+        questions: [
+          { question: 'Is prop-drilling avoided?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are emits/events documented and following naming conventions?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Are components designed for composability (slots, controlled/uncontrolled patterns)?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+          { question: 'Do components avoid accepting huge configuration objects that reduce clarity?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+        ]
+      },
+      // {
+      //   title: 'Component / Logic / UX Logic Division',
+      //   comment: '',
+      //   applicable: true,
+      //   description:'',
+      //   questions: [
+      //     { question: 'Is UI logic separated from domain and business logic?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+      //     { question: 'Are composables used properly to extract reusable logic?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+      //     { question: 'Does template code remain focused on presentation rather than computation?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+      //     { question: 'Are accessibility and UX considerations integrated cleanly in the component layer?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+      //     { question: 'Are components small, single‑responsibility units rather than “god components”?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+      //   ]
+      // },
+      // {
+      //   title: 'Domain‑Driven Design (DDD) Patterns',
+      //   comment: '',
+      //   applicable: true,
+      //   description:'',
+      //   questions: [
+      //     { question: 'Is Domain Driven Development in use?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+      //     { question: 'Are domain concepts expressed explicitly (entities, value objects, aggregates)?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+      //     { question: 'Are domain modules designed to be framework‑independent and testable?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+      //     { question: 'Are domain boundaries respected (no cross‑domain leakage)?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+      //     { question: 'Are domain events, use‑cases, or services clearly modeled?', score: null, weight: 1, questionType: 'trueFalse', comment: '' },
+      //   ]
+      // },
     ],
   },
+  // WIP
   styling: {
     title: 'Styling',
     img: '/img/styling.avif',
