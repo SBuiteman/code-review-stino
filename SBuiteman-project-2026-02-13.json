@@ -1,0 +1,294 @@
+{
+  "data": {
+    "user": {
+      "projectsV2": {
+        "totalCount": 1,
+        "nodes": [
+          {
+            "id": "PVT_kwHOAQUQ1c4A5oCT",
+            "number": 1,
+            "title": "@SBuiteman's Codecraft Palooza",
+            "items": {
+              "totalCount": 21,
+              "nodes": [
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaqygA",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uKtC",
+                    "title": "Update/Group questions & answers",
+                    "number": 4,
+                    "body": "Some questions should change the description of the options (good - bad) to something that reflects better the answers and whats is considered positive and negative. \n\nIf a question covers the same subject and functionality/standard/requirement it should be grouped under one question. If necessary make the question broader and update the answers by override or changing the type.\n\n**Refactor questions & categories:**\n - Rename categories according to proposal\n - Remove duplication of questions, group under broader question. Specially on low points categories, avoid low priority categories with too many questions.\n - Make the option of _not implemented_/_applicable_ as _very bad_ for some answers\n - Change question types to more relevant ones\n - Override options for exceptions to question types\n - Add the option of not relevant, making the comment mandatory to explain why, and updating the score to not affect positively nor negatively\n\nSection analysis and proposals:\n- Divide points into the categories, then distribute category points into its questions & check amount of questions.\n  - **Code Readability** ~(Best practices)~ (s20, r20, m20) **60 points**\n    - https://github.com/zakirullin/cognitive-load your code should be easy to follow, apply ideas from the cognitive load doc\n    - Needs a bit more clarity and examples on the questions\n  - **Application design** (previously Project set-up) (s20, m20, r10) **50 points**\n    - Add Locality of Behaviour https://htmx.org/essays/locality-of-behaviour/\n    - Need Architecture checks\n    - State logic, how business logic is managed and keept understood\n    - Bundler set up\n    - Co-dependencies & coupling with other projects and within the project (are they necessary?)\n    - API design of components and elements\n    - Component / logic / UX logic division\n    - Domain Driven Design patterns\n  - **<Framework> Usage** (Technology stack, in this case VueJs) (r20, m10, s10) **40 Points**\n    -  Group by official tech grouping example: vue templates, Reactivity, style bindings. Chapters on official documentation\n    - Pinia, state management correct set-up\n    - Vue ecosystem in general\n  - **Dependencies** (r20, s10, m5) **35 Points**\n    - Are dependencies up to date? Node version, main framework ecosystem versions, internal libs are updated\n    - Uses bank deprecated libs and versions?\n    - Uses unmaintained dependencies?\n    - Deviates from standard libraries? are they justified?\n    - Wasted dependencies: few usages from a huge library\n    - Mixing normal, dev & peer dependencies\n    - Override dependencies from your dependencies (example override vue2 from a dependency because your app uses vue3)\n  - **Versioning** (m20, s10) **30 Points** (R)\n    - Are the merged branches deleted?\n    - Are old branches deleted?\n  - **Testing** (s20, r10) **30 Points**\n    - Are integration test present for all user scenarios? apply unit t. question to integration tests\n    - Is mocking done correctly?\n    - are waits avoided?\n  - **Documentation** ~(Best practices)~, (m10, r10, s5) **25 Points**\n  - **Static code analysis** (quality control) (m10, r5, s5) **20 Points** (R)\n  - **Styling** (r5, s5, m5) **15 Points**\n    - Include Tailwing\n    - Emerald 2 usage\n  -  To be deleted\n  - **Security** ~(Best practices)~ (checks this one), (m5) **5 Points**\n  - **Accessibility**: needs more questions, reach accessibility team, link with audit (r5) **5 points**\n    - Did you perform a review?\n    - Deserves a complete review?",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaqyKk",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uJK5",
+                    "title": "Add GitHub Link to page",
+                    "number": 1,
+                    "body": "Add links between code and app.\nThe footer link can be updated or a new link can be added to the footer.",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaqyuU",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uLnS",
+                    "title": "Reduce clicks to answer a question",
+                    "number": 6,
+                    "body": "- Remove expand functionality & button\n- Move answer options to top bar\n- Make sure explanation of the question is visible but not obtrusive\n   - Under the qustion, smaller font, not too wide, not to tall\n   - If explanation is too long implement a _read more_ or _pop-up_\n- Hide textarea\n- Add button below to add comment with type [Link](https://primevue.org/button/#link) no icon needed:\n   - Clicking it shows the textarea\n   - Autofocus on adding / editing\n   - Autosaving on blur / exiting the texarea\n   - Saving or stop editing the comment will make the text area look like plain text / preview of the comment\n   - Once a comment is set, the add button becomes edit button\n   - Certain options might have required comment and will open & focus the editor\n   - When the comment is mandatory it doesn't close the edition until a comment was made and shows a validation error when empty",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaqyRc",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uJxV",
+                    "title": "Make team information mandatory & prominent",
+                    "number": 2,
+                    "body": "Make team information mandatory (for example as a first step)\n\nA page before the category page or if IF mandatory fields are not set, show, when they are set & saved, close it and show button to edit\nAdd close/save button that is disabled if mandatory fields are not filled\nNexus, Fortify and Sonar links are not always useful (put into more fields expandable) so they are optional\nTeam clarity is not necessary\nCode repo and repo url are the same field, remove one, make the other mandatory\nEverything else is mandatory\nMake sure that the fields indicate that the data is from the project being reviewed, the only field for the reviewers is the reviewers field",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaq0aQ",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uSDm",
+                    "title": "Continue reviewing should redirect instead popping the modal (link question with area)",
+                    "number": 16,
+                    "body": "Continue reviewing should redirect instead popping the modal (link question with area)\n\nLink to category and anchor to question",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaqyZA",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uKJj",
+                    "title": "Update answer / explanations system",
+                    "number": 3,
+                    "body": "Questions should be able to change the description of the options (good - bad) to something that reflects better the answers and whats is considered positive and negative:\n\nAdd the functionality:\n\nOn options custom messages overrides can be set, individually or per type of question: not implemented can be good or bad depending the question or question type\nSome questions types where a lot is bad others where a lot is good\nBooleans, ranges with different orders (implemented-good -> not-implemented-bad, used-bad -> not-used-good) & custom messages\nInternally the score numbers should be preserved, this change should help to understand the question and answers, a rephrase of the question can also help in some cases.\nThe options should be a map/set of ordered scores and label descriptions, following src/components/base/RateSelect.vue idea\nOverrides should follow the map/set format so only the desired values are overriden",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaqyk4",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uK-Y",
+                    "title": "Update word file with warp questions to match the new questions and categories",
+                    "number": 5,
+                    "body": "Using the new questions and catagories update the word document from WARP so both are consistent (some differences may apply since the word document is not interactive and works as a checklist)",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaqzrI",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uPcY",
+                    "title": "Implement github actions for deployment & PR checks",
+                    "number": 9,
+                    "body": "- Set up deployment on merge\n- set up basic lint on PR\n- Set up basic gitcommit checks on PR",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaqz6w",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uQRc",
+                    "title": "Add code snippets or markdown to textareas",
+                    "number": 11,
+                    "body": "When you comment you should be able to drop code examples and other formatted suggestions\n\nSuggestions:\n\nhttps://github.com/code-farmer-i/vue-markdown-editor\nhttps://github.com/imzbf/md-editor-v3",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaqz2U",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uQAY",
+                    "title": "You could have an indicator on the import, export that a review is on progress or has been imported, plus a secondary button to start-over",
+                    "number": 10,
+                    "body": "",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaqz_E",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uQhO",
+                    "title": "Some questions lack category so can only be answered by the missing review button.",
+                    "number": 12,
+                    "body": "",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaq0I0",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uRFL",
+                    "title": "Versioning has the commit message quality repeated although the questions are different, seems like the second one is related to versioning.",
+                    "number": 13,
+                    "body": "",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaq0Ns",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uRV1",
+                    "title": "Some questions lack category so can only be answered by the missing review button.",
+                    "number": 14,
+                    "body": "",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaq0Uo",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uRsj",
+                    "title": "Add contextual menu to answer questions",
+                    "number": 15,
+                    "body": "Add a contextual menu to the questions that open the answers to quickly answer",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaqy7o",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uMdb",
+                    "title": "Show all comments on score page",
+                    "number": 7,
+                    "body": "Show all comments on score page, including question comments, and reasoning of the score.\n\n- Avoid adding all the questions again, only add the questions that have comments with the answer in a minimalistic card.\n- Set the display on the _feedback by subject_ area:\n  - Bullet points per commented questions with score",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaqzAA",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uMxo",
+                    "title": "Not applicable should be a secondary option from a menu and require explanation",
+                    "number": 8,
+                    "body": "We want to give users an out when a question really is not applicable. This should not be too easy to find to discourage using it.\n\n- Not applicable should be a option from a menu in each question (not part of the answers)\n- The menu is only visible when a question is hovered\n- When \"Does not apply\" is selected, show the explanation box\n- Explanation is required\n- Add a placeholder to the explanation area: \"Please explain why it does not apply\"",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaq0gw",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uSbv",
+                    "title": "Update visualisation for tablet / mobile",
+                    "number": 17,
+                    "body": "",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaq0lQ",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uS1P",
+                    "title": "Questions with a pre-defined answer depending the type",
+                    "number": 18,
+                    "body": "AI provided sulutions for topic? Some form of copilot gives suggestions?",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaq06Q",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uTy_",
+                    "title": "Export should do it with project-name + timestamp",
+                    "number": 19,
+                    "body": "",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgaq0-Q",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63uUMD",
+                    "title": "Add official documentation links to questions",
+                    "number": 20,
+                    "body": "On questions related to official solutions add a link on description",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                },
+                {
+                  "id": "PVTI_lAHOAQUQ1c4A5oCTzgartxI",
+                  "content": {
+                    "__typename": "Issue",
+                    "id": "I_kwDONsvfqM63x1l_",
+                    "title": "Add automatic dependency updates",
+                    "number": 21,
+                    "body": "",
+                    "repository": {
+                      "nameWithOwner": "SBuiteman/assignment"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}
